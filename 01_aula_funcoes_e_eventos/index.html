@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário Simples</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <form id="form-simples" class="card" autocomplete="on">
+        <h1 class="titulo">Formulário</h1>
+
+        <label for="campo-input" class="label">Digite algo</label>
+        <input
+          type="text"
+          id="campo-input"
+          name="campo_input"
+          class="input"
+          placeholder="Escreva aqui..."
+        />
+
+        <button type="submit" id="btn-enviar" class="btn">Enviar</button>
+
+        <!-- área opcional para você mostrar o resultado via JS -->
+        <div id="resultado" class="resultado"></div>
+      </form>
+    </main>
+
+    <!-- opcional: já deixa o script linkado para você criar depois -->
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
