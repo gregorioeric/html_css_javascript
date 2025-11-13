@@ -1,0 +1,310 @@
+/* =========================================================
+   Tema base e variáveis
+   ========================================================= */
+:root {
+  --bg: #0f172a; /* fundo principal */
+  --card: #111827; /* container */
+  --muted: #94a3b8; /* textos secundários */
+  --text: #e5e7eb; /* texto principal */
+  --border: #1f2937; /* bordas */
+  --input-bg: #0b1224; /* inputs/selects */
+  --primary: #2563eb; /* ação primária */
+  --primary-600: #1d4ed8;
+  --success-bg: #ecfdf5;
+  --success-text: #065f46;
+  --error-bg: #fef2f2;
+  --error-text: #991b1b;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, "Helvetica Neue", Arial;
+  background: radial-gradient(
+        1200px 800px at 20% -10%,
+        #0b1224 0%,
+        #0a1020 40%,
+        var(--bg) 75%
+      )
+      no-repeat,
+    var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* =========================================================
+   Layout
+   ========================================================= */
+.container {
+  width: min(980px, 92vw);
+  margin: 48px auto;
+  padding: clamp(18px, 2vw, 28px);
+  background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.04),
+        rgba(255, 255, 255, 0)
+      )
+      padding-box,
+    var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+.container h1 {
+  margin: 0 0 20px;
+  font-size: clamp(1.45rem, 1.1rem + 1.4vw, 2rem);
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   Formulários
+   ========================================================= */
+form {
+  display: grid;
+  gap: 18px;
+}
+
+.grid-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 760px) {
+  .grid-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grupo {
+  display: grid;
+  gap: 8px;
+}
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+.ajuda {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Campos base */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.28);
+}
+
+/* Selects (inclui Tipo de Cliente e Estado/UF) */
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #9ca3af 50%),
+    linear-gradient(135deg, #9ca3af 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position: calc(100% - 20px) calc(50% - 5px),
+    calc(100% - 15px) calc(50% - 5px), calc(100% - 2.5rem) 0;
+  background-size: 6px 6px, 6px 6px, 1px 100%;
+  background-repeat: no-repeat;
+}
+
+/* Estados de erro (você pode aplicar via JS: .invalido) */
+.invalido {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Botões */
+button {
+  appearance: none;
+  border: 1px solid transparent;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.04s ease, box-shadow 0.2s ease, filter 0.2s ease,
+    background 0.2s ease;
+}
+#btn-salvar-cliente {
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.25);
+}
+#btn-salvar-cliente:hover {
+  filter: brightness(1.06);
+}
+#btn-salvar-cliente:active {
+  transform: translateY(1px);
+}
+
+.secundario {
+  background: transparent;
+  color: #cbd5e1;
+  border-color: var(--border);
+}
+.secundario:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================================
+   Mensagens
+   ========================================================= */
+.msg {
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  color: #cbd5e1;
+}
+.msg.ok {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.msg.erro {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* =========================================================
+   Resultado (listagem/tabela de clientes)
+   ========================================================= */
+.resultado {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Tabela padrão — compatível com seu clientes.js */
+.tabela-scroll {
+  width: 100%;
+  overflow: auto;
+}
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.tabela thead th {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.06);
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #dbeafe;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tabela tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  vertical-align: top;
+}
+.tabela tbody tr:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+.tabela td.num {
+  text-align: right;
+}
+.acoes {
+  white-space: nowrap;
+}
+
+/* Botões de ação na tabela */
+.btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn.pequeno {
+  font-size: 0.85rem;
+}
+.btn.danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: #fecaca;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+.btn.danger:hover {
+  background: rgba(239, 68, 68, 0.18);
+}
+
+/* =========================================================
+   Acessibilidade
+   ========================================================= */
+:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.5);
+  outline-offset: 2px;
+}
+
+/* Utilitários */
+.hidden {
+  display: none !important;
+}
+.center {
+  text-align: center;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.mt-12 {
+  margin-top: 12px;
+}
+.mt-16 {
+  margin-top: 16px;
+}
+
+.resultado {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.card {
+  border: 0.2rem solid rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 0.6rem;
+}
