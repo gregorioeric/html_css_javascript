@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Cadastro de Produtos</h1>
+
+      <form id="form-produtos" novalidate>
+        <div class="grid-inputs">
+          <div class="grupo">
+            <label for="nome-produto">Nome do Produto</label>
+            <input
+              type="text"
+              id="nome-produto"
+              name="nomeProduto"
+              placeholder="Ex.: Caderno Universitário 200f"
+              required
+            />
+            <small class="ajuda">Obrigatório</small>
+          </div>
+
+          <div class="grupo">
+            <label for="sku-produto">SKU/Código</label>
+            <input
+              type="text"
+              id="sku-produto"
+              name="skuProduto"
+              placeholder="Ex.: CAD-200F-PT"
+              required
+            />
+            <small class="ajuda">Obrigatório</small>
+          </div>
+        </div>
+
+        <div class="grid-inputs">
+          <div class="grupo">
+            <label for="categoria-produto">Categoria</label>
+            <input
+              list="categorias"
+              id="categoria-produto"
+              name="categoriaProduto"
+              placeholder="Selecione ou digite"
+              required
+            />
+            <datalist id="categorias">
+              <option value="Papelaria"></option>
+              <option value="Informática"></option>
+              <option value="Escritório"></option>
+              <option value="Material Escolar"></option>
+              <option value="Outros"></option>
+            </datalist>
+            <small class="ajuda">Obrigatório</small>
+          </div>
+
+          <div class="grupo">
+            <label for="preco-produto">Preço (R$)</label>
+            <input
+              type="text"
+              id="preco-produto"
+              name="precoProduto"
+              inputmode="decimal"
+              placeholder="Ex.: 49,90"
+              pattern="^\d{1,3}(\.\d{3})*,\d{2}$|^\d+([.,]\d{2})?$"
+              aria-describedby="ajuda-preco"
+              required
+            />
+            <small class="ajuda">Use vírgula para centavos. Ex.: 49,90</small>
+          </div>
+        </div>
+
+        <div class="grid-inputs">
+          <div class="grupo">
+            <label for="estoque-produto">Estoque</label>
+            <input
+              type="number"
+              id="estoque-produto"
+              name="estoqueProduto"
+              min="0"
+              step="1"
+              placeholder="Ex.: 100"
+              required
+            />
+            <small class="ajuda">Obrigatório</small>
+          </div>
+
+          <div class="grupo">
+            <label for="unidade-produto">Unidade</label>
+            <select id="unidade-produto" name="unidadeProduto" required>
+              <option value="" selected disabled>Selecione</option>
+              <option value="UN">UN</option>
+              <option value="CX">CX</option>
+              <option value="KG">KG</option>
+              <option value="PC">PC</option>
+            </select>
+            <small class="ajuda">Obrigatório</small>
+          </div>
+        </div>
+
+        <div class="grupo">
+          <label for="descricao-produto">Descrição</label>
+          <textarea
+            id="descricao-produto"
+            name="descricaoProduto"
+            rows="4"
+            placeholder="Detalhes do produto (material, cor, medidas, etc.)"
+          ></textarea>
+          <small class="ajuda">Opcional</small>
+        </div>
+
+        <button type="submit" id="btn-salvar-produto">Salvar</button>
+        <button type="reset" class="secundario" id="btn-limpar-produto">
+          Limpar
+        </button>
+      </form>
+
+      <div id="msg-produtos" class="msg" role="status" aria-live="polite"></div>
+
+      <section
+        id="lista-produtos"
+        class="resultado"
+        aria-label="Produtos cadastrados"
+      >
+        <!-- Aqui você pode renderizar a lista de produtos com JS -->
+      </section>
+    </main>
+
+    <script src="./assets/js/produtos.js"></script>
+  </body>
+</html>
